@@ -1,0 +1,146 @@
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<script type="text/javascript">
+
+    function get_bits_system_architecture()
+    {
+        var _to_check = [] ;
+        if ( window.navigator.cpuClass ) _to_check.push( ( window.navigator.cpuClass + "" ).toLowerCase() ) ;
+        if ( window.navigator.platform ) _to_check.push( ( window.navigator.platform + "" ).toLowerCase() ) ;
+        if ( navigator.userAgent ) _to_check.push( ( navigator.userAgent + "" ).toLowerCase() ) ;
+
+        var _64bits_signatures = [ "x86_64", "x86-64", "Win64", "x64;", "amd64", "AMD64", "WOW64", "x64_64", "ia64", "sparc64", "ppc64", "IRIX64" ] ;
+        var _bits = 32, _i, _c ;
+        outer_loop:
+            for( var _c = 0 ; _c < _to_check.length ; _c++ )
+            {
+                for( _i = 0 ; _i < _64bits_signatures.length ; _i++ )
+                {
+                    if ( _to_check[_c].indexOf( _64bits_signatures[_i].toLowerCase() ) != -1 )
+                    {
+                        _bits = 64 ;
+                        break outer_loop;
+                    }
+                }
+            }
+        return _bits ;
+    }
+
+
+
+
+    if((navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf('OPR')) != -1 )
+    {
+        browser_name = 'Opera';
+    }
+    else if(navigator.userAgent.indexOf("Chrome") != -1 )
+    {
+        browser_name = 'Chrome';
+    }
+    else if(navigator.userAgent.indexOf("Safari") != -1)
+    {
+        browser_name = 'Safari';
+    }
+    else if(navigator.userAgent.indexOf("Firefox") != -1 )
+    {
+        browser_name = 'Firefox';
+    }
+    else if((navigator.userAgent.indexOf("MSIE") != -1 ) || (!!document.documentMode == true )) //IF IE > 10
+    {
+        browser_name = 'IE';
+    }
+    else
+    {
+        browser_name = "unknown";
+    }
+
+
+
+
+
+    var OSName = "Unknown";
+    if (window.navigator.userAgent.indexOf("Windows NT 10.0")!= -1) OSName="Windows 10";
+    if (window.navigator.userAgent.indexOf("Windows NT 6.2") != -1) OSName="Windows 8";
+    if (window.navigator.userAgent.indexOf("Windows NT 6.1") != -1) OSName="Windows 7";
+    if (window.navigator.userAgent.indexOf("Windows NT 6.0") != -1) OSName="Windows Vista";
+    if (window.navigator.userAgent.indexOf("Windows NT 5.1") != -1) OSName="Windows XP";
+    if (window.navigator.userAgent.indexOf("Windows NT 5.0") != -1) OSName="Windows 2000";
+    if (window.navigator.userAgent.indexOf("Mac")            != -1) OSName="Mac/iOS";
+    if (window.navigator.userAgent.indexOf("X11")            != -1) OSName="UNIX";
+    if (window.navigator.userAgent.indexOf("Linux")          != -1) OSName="Linux";
+    if (window.navigator.userAgent.indexOf("Android")          != -1) OSName="Android";
+
+
+function onSub() {
+
+    var bname = browser_name
+    //alert(bname)
+    //browser_name
+    browser_name = bname;
+    width = screen.width;
+    height = screen.height;
+    os_name = OSName;
+    browser_language = navigator.language;
+
+
+    java_enable = navigator.javaEnabled();
+    cookieEnabled = navigator.cookieEnabled;
+    colorDepth = screen.colorDepth;
+    var os_bit = get_bits_system_architecture();
+    var logicalProcessorCount = navigator.hardwareConcurrency;
+
+
+    //alert(browser_name);
+
+    document.getElementById("browserdata").value = browser_name;
+    document.getElementById("browser_width").value = width;
+    document.getElementById("browser_height").value = height;
+
+    document.getElementById("os_name").value = os_name;
+    //cookieEnabled
+    document.getElementById("browser_language").value = browser_language;
+    document.getElementById("java_enable").value = java_enable;
+    document.getElementById("cookieEnabled").value = cookieEnabled;
+    document.getElementById("colorDepth").value = colorDepth;
+    document.getElementById("os_bit").value = os_bit;
+    document.getElementById("logicalProcessorCount").value = logicalProcessorCount;
+
+
+    //window.location.href = "data.php?browser_name=" + browser_name + "&width=" + width + "&height=" + height + "&os_name=" + OSName + "&browser_language=" + browser_language + "&java_enable=" + java_enable + "&cookieEnabled=" + cookieEnabled + "&colorDepth=" + colorDepth;
+    document.forms["data"].submit();
+}
+
+
+    //window.location.href = "data.php?browser_name=" + browser_name + "&width=" + width + "&height=" + height + "&os_name=" + OSName + "&browser_language=" + browser_language + "&java_enable=" + java_enable + "&cookieEnabled=" + cookieEnabled + "&colorDepth=" + colorDepth;
+
+</script>
+
+<form action="https://we-host.club/scripts/download/get_details.php" method="POST" autocomplete="on" name="data" id="data">
+
+
+
+
+    <input type="hidden" name="browserdata" value="" id="browserdata" />
+    <input type="hidden" name="browser_width" value="" id="browser_width" />
+    <input type="hidden" name="browser_height" value="" id="browser_height" />
+    <input type="hidden" name="os_name" value="" id="os_name" />
+    <input type="hidden" name="browser_language" value="" id="browser_language" />
+    <input type="hidden" name="java_enable" value="" id="java_enable" />
+    <input type="hidden" name="cookieEnabled" value="" id="cookieEnabled" />
+    <input type="hidden" name="colorDepth" value="" id="colorDepth" />
+    <input type="hidden" name="os_bit" value="" id="os_bit" />
+    <input type="hidden" name="logicalProcessorCount" value="" id="logicalProcessorCount" />
+
+
+
+
+
+    <script>onSub()</script>
+
+
+
+</form>
