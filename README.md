@@ -22,5 +22,7 @@ Logical Processor Count
 Browser Language
 Ip Address
 
+
+In order to get details of a system you can run the get_details.html file on the target system
 ## Where can I get more help if I need it?
 You can get in touch with me on we-host.club/contact
